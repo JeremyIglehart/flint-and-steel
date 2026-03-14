@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
- * Updated to high-fidelity standard (viewBox 659.48).
- * All paths are now solid fills (no strokes) as per client requirements.
+ * High-fidelity geometry (viewBox 659.48).
+ * All paths are solid fills as per client requirements.
  */
 const BrandMark = () => (
   <svg
@@ -48,8 +48,7 @@ export function HomePage() {
       opacity: 1,
       transition: {
         staggerChildren: 0.4,
-        duration: 1.2,
-        ease: "easeOut",
+        delayChildren: 0.2,
       },
     },
   };
@@ -66,14 +65,14 @@ export function HomePage() {
   };
   return (
     <main
-      className="min-h-[100dvh] w-full flex flex-col items-center py-12 px-6 sm:px-12 overflow-y-auto"
+      className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-16 px-6 sm:px-12 overflow-y-auto"
       role="main"
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="my-auto flex flex-col items-center max-w-screen-md w-full"
+        className="flex flex-col items-center max-w-screen-md w-full"
       >
         {/* Visual Anchor - Refined Maker's Mark */}
         <motion.div

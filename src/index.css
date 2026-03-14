@@ -16,14 +16,14 @@
     --radius: 0rem;
   }
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth bg-background;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     height: 100%;
   }
   body {
-    @apply bg-background text-foreground selection:bg-[#D95C3C]/30 selection:text-foreground;
+    @apply bg-background text-foreground selection:bg-[#D95C3C]/40 selection:text-foreground;
     font-family: 'Newsreader', serif;
     min-height: 100%;
     overflow-x: hidden;
