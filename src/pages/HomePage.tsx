@@ -70,8 +70,8 @@ export function HomePage() {
         transition={{ duration: 1.8, ease: [0.25, 0.1, 0.25, 1.0] }}
         className="flex flex-col items-center max-w-screen-md w-full"
       >
-        {/* Visual Anchor: Intentional spacing for brand focus */}
-        <div className="mb-10 md:mb-14 lg:mb-18">
+        {/* Visual Anchor: Tightened spacing for cohesive brand focus */}
+        <div className="mb-4 md:mb-6 lg:mb-8">
           <BrandMark />
         </div>
         {/* Primary Invocation: High-contrast serif italics */}
