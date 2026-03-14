@@ -4,15 +4,20 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --background: 30 12% 12%; /* #1C1B1A Equivalent - Industrial Steel Slab */
-    --foreground: 30 15% 90%; /* Bone White */
-    --primary: 25 10% 85%;    /* Clean gray for H1 */
-    --primary-foreground: 30 12% 12%;
-    --muted: 30 8% 25%;
-    --muted-foreground: 25 5% 65%; /* Readable body text */
-    --border: 30 8% 22%;
-    --input: 30 8% 22%;
-    --ring: 12 75% 55%;      /* Flint Glow #D95C3C */
+    /* Industrial Steel Slab - Deep Darkened Base */
+    --background: 30 12% 9%; 
+    /* BrandMark - The brightest point in the palette (approx 30% lightness) */
+    --foreground: 25 10% 30%; 
+    /* H1 Invocation - Noticeably darker than the logo (approx 24% lightness) */
+    --primary: 25 8% 24%;    
+    --primary-foreground: 30 12% 9%;
+    /* Border/Muted - Deep charcoal synchronization */
+    --muted: 30 10% 15%;
+    /* Body Text - Darkest text color while maintaining visibility (approx 19% lightness) */
+    --muted-foreground: 25 5% 19%; 
+    --border: 30 8% 12%;
+    --input: 30 8% 12%;
+    --ring: 12 75% 55%;      /* Flint Glow #D95C3C - grounded in dark context */
     --radius: 0rem;
   }
   html {
@@ -21,24 +26,19 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     height: 100%;
-    /* Mobile tap optimization */
     -webkit-tap-highlight-color: transparent;
-    /* Consistent scrollbar gutter to prevent layout jumping */
     overflow-y: auto;
   }
   body {
     @apply bg-background text-foreground;
-    /* Use high-quality selection colors for readability on dark background */
-    selection: bg-[#D95C3C]/30;
-    selection: text-white;
+    selection: bg-[#D95C3C]/20;
+    selection: text-white/80;
     font-family: 'Newsreader', serif;
     min-height: 100%;
     margin: 0;
     padding: 0;
-    /* Prevent horizontal bounce on mobile */
     overflow-x: hidden;
   }
-  /* Root container sizing to ensure background covers all viewport scenarios */
   #root {
     min-height: 100dvh;
     background-color: hsl(var(--background));
@@ -49,7 +49,6 @@
     text-wrap: balance;
   }
 }
-/* Custom transitions for the subtle page arrival */
 .framer-motion-arrival {
   will-change: transform, opacity;
 }

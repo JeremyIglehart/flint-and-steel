@@ -3,7 +3,6 @@ import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
  * High-fidelity geometry (viewBox 659.48).
- * Fluid scaling: optimized for very small viewports (iPhone SE) up to desktop.
  */
 const BrandMark = () => (
   <svg
@@ -47,18 +46,18 @@ export function HomePage() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.35,
-        delayChildren: 0.2,
+        staggerChildren: 0.3,
+        delayChildren: 0.1,
       },
     },
   };
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 15 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1.4,
+        duration: 1.2,
         ease: [0.33, 1, 0.68, 1],
       },
     },
@@ -72,26 +71,28 @@ export function HomePage() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        // Optical adjustment: Slight negative margin-top on large screens 
-        // to prevent the content from feeling "bottom-heavy"
-        className="flex flex-col items-center max-w-screen-md w-full lg:-mt-12"
+        // Optical centering adjustment to prevent bottom-heaviness on large screens
+        className="flex flex-col items-center max-w-screen-md w-full lg:-mt-24"
       >
         <motion.div
           variants={itemVariants}
-          className="mb-6 md:mb-10 text-foreground"
+          /* Tightening the vertical space: bringing H1 directly under the BrandMark */
+          className="mb-2 md:mb-3 text-foreground"
           aria-label="Flint and Steel Maker's Mark"
         >
           <BrandMark />
         </motion.div>
         <motion.h1
           variants={itemVariants}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-6 md:mb-10 text-balance italic"
+          /* text-primary uses the mid-tone darkened shade */
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-4 md:mb-6 text-balance italic"
         >
           No sense in rushing to become.
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2] tracking-[0.01em] max-w-[36ch] mx-auto text-center font-normal text-balance"
+          /* text-muted-foreground uses the darkest readable shade */
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2] tracking-[0.01em] max-w-[34ch] mx-auto text-center font-normal text-balance"
         >
           There’s no race to becoming, because you’re already in the unfolding flow of being.
           Each moment is a step, and each step is enough.
