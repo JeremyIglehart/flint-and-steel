@@ -69,15 +69,15 @@ const BrandMark = () => (
 );
 export function HomePage() {
   return (
-    <main className="min-h-[100dvh] bg-[#F7F6F2] flex flex-col items-center justify-center px-6 py-12 md:px-12 selection:bg-[#D95C3C]/10">
+    <main className="min-h-[100dvh] bg-[#EDE8E0] flex flex-col items-center justify-center px-6 py-12 md:px-12 selection:bg-[#D95C3C]/10">
       <motion.div
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.8, ease: [0.25, 0.1, 0.25, 1.0] }}
         className="flex flex-col items-center max-w-screen-md w-full"
       >
-        {/* Visual Anchor: Responsive Margin */}
-        <div className="mb-10 md:mb-16 lg:mb-20">
+        {/* Visual Anchor: Reduced Gap per client feedback */}
+        <div className="mb-8 md:mb-12 lg:mb-16">
           <BrandMark />
         </div>
         {/* Primary Invocation: Text Balance for Clean Mobile Breaks */}
