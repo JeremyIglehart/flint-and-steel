@@ -5,16 +5,16 @@
 @layer base {
   :root {
     /* Industrial Steel Slab - Deep Darkened Base */
-    --background: 30 12% 9%; 
-    /* BrandMark - The brightest point in the palette (approx 30% lightness) */
-    --foreground: 25 10% 30%; 
-    /* H1 Invocation - Noticeably darker than the logo (approx 24% lightness) */
-    --primary: 25 8% 24%;    
+    --background: 30 12% 9%;
+    /* BrandMark - Increased lightness for better pop (approx 40% lightness) */
+    --foreground: 25 10% 40%;
+    /* H1 Invocation - Refined for "deep readability" (approx 32% lightness) */
+    --primary: 25 8% 32%;
     --primary-foreground: 30 12% 9%;
     /* Border/Muted - Deep charcoal synchronization */
     --muted: 30 10% 15%;
-    /* Body Text - Darkest text color while maintaining visibility (approx 19% lightness) */
-    --muted-foreground: 25 5% 19%; 
+    /* Body Text - Darkest text color while maintaining visibility (approx 26% lightness) */
+    --muted-foreground: 25 5% 26%;
     --border: 30 8% 12%;
     --input: 30 8% 12%;
     --ring: 12 75% 55%;      /* Flint Glow #D95C3C - grounded in dark context */
@@ -30,14 +30,16 @@
     overflow-y: auto;
   }
   body {
-    @apply bg-background text-foreground;
-    selection: bg-[#D95C3C]/20;
-    selection: text-white/80;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Newsreader', serif;
     min-height: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+  }
+  ::selection {
+    background-color: rgba(217, 92, 60, 0.3);
+    color: #F7F6F2;
   }
   #root {
     min-height: 100dvh;

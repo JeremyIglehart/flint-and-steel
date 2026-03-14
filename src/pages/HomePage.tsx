@@ -9,7 +9,8 @@ const BrandMark = () => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 659.48 659.48"
     className="w-[280px] sm:w-[370px] md:w-[460px] lg:w-[550px] max-w-[85vw] h-auto select-none pointer-events-none"
-    aria-hidden="true"
+    aria-label="Flint and Steel Logo"
+    role="img"
   >
     <path
       fill="currentColor"
@@ -64,34 +65,31 @@ export function HomePage() {
   };
   return (
     <main
-      className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-8 md:py-16 px-6 sm:px-12 overflow-x-hidden"
+      className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-12 md:py-24 px-6 sm:px-12 overflow-x-hidden antialiased"
       role="main"
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        // Optical centering adjustment to prevent bottom-heaviness on large screens
-        className="flex flex-col items-center max-w-screen-md w-full lg:-mt-24"
+        // Balanced optical centering adjustment
+        className="flex flex-col items-center max-w-screen-md w-full lg:-mt-16"
       >
         <motion.div
           variants={itemVariants}
-          /* Tightening the vertical space: bringing H1 directly under the BrandMark */
-          className="mb-2 md:mb-3 text-foreground"
-          aria-label="Flint and Steel Maker's Mark"
+          className="mb-4 md:mb-6 text-foreground"
+          aria-hidden="true"
         >
           <BrandMark />
         </motion.div>
         <motion.h1
           variants={itemVariants}
-          /* text-primary uses the mid-tone darkened shade */
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-4 md:mb-6 text-balance italic"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-6 md:mb-8 text-balance italic"
         >
           No sense in rushing to become.
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          /* text-muted-foreground uses the darkest readable shade */
           className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2] tracking-[0.01em] max-w-[34ch] mx-auto text-center font-normal text-balance"
         >
           There’s no race to becoming, because you’re already in the unfolding flow of being.
