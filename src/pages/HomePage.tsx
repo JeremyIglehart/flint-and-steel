@@ -75,9 +75,10 @@ export function HomePage() {
         className="flex flex-col items-center max-w-screen-md w-full"
       >
         {/* Visual Anchor - Refined Maker's Mark */}
+        {/* Strictly cut margin-bottom in half for Phase 19: Vertical Rhythm Optimization */}
         <motion.div
           variants={itemVariants}
-          className="mb-12 md:mb-16 text-foreground"
+          className="mb-6 md:mb-8 text-foreground"
           aria-label="Flint and Steel Maker's Mark"
         >
           <BrandMark />
