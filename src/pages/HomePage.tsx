@@ -3,7 +3,7 @@ import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
  * Optimized for absolute visual consistency and currentColor inheritance.
- * Scaled up by ~67% (1.67x) per client request to fill negative space.
+ * Scaled up to fill negative space as per design requirements.
  */
 const BrandMark = () => (
   <svg
@@ -65,12 +65,20 @@ export function HomePage() {
     },
   };
   return (
-    <main className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-12 px-6 sm:px-12 overflow-y-auto">
+    <main 
+      className="min-h-[100dvh] w-full flex flex-col items-center py-12 px-6 sm:px-12 overflow-y-auto"
+      role="main"
+    >
+      {/* 
+        Using my-auto on the content wrapper instead of justify-center on the parent.
+        This provides perfect vertical centering on large viewports, 
+        but naturally allows content to flow downwards if the viewport height is restricted.
+      */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col items-center max-w-screen-md w-full"
+        className="my-auto flex flex-col items-center max-w-screen-md w-full"
       >
         {/* Visual Anchor - Maker's Mark */}
         <motion.div
