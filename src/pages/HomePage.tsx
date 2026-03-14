@@ -3,14 +3,13 @@ import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
  * High-fidelity geometry (viewBox 659.48).
- * Scaled up by 30% per client feedback: w-[370px] / md:w-[460px] / lg:w-[550px].
- * Optimized with select-none to preserve visual identity during user interaction.
+ * Fluid scaling: optimized for very small viewports (iPhone SE) up to desktop.
  */
 const BrandMark = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 659.48 659.48"
-    className="w-[370px] md:w-[460px] lg:w-[550px] max-w-full h-auto select-none pointer-events-none"
+    className="w-[280px] sm:w-[370px] md:w-[460px] lg:w-[550px] max-w-[85vw] h-auto select-none pointer-events-none"
     aria-hidden="true"
   >
     <path
@@ -48,52 +47,51 @@ export function HomePage() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.4,
+        staggerChildren: 0.35,
         delayChildren: 0.2,
       },
     },
   };
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 12 },
+    hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1.5,
-        ease: [0.33, 1, 0.68, 1], // Custom cubic-bezier for smoother arrival
+        duration: 1.4,
+        ease: [0.33, 1, 0.68, 1],
       },
     },
   };
   return (
     <main
-      className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-16 px-6 sm:px-12 overflow-y-auto"
+      className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-8 md:py-16 px-6 sm:px-12 overflow-x-hidden"
       role="main"
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col items-center max-w-screen-md w-full"
+        // Optical adjustment: Slight negative margin-top on large screens 
+        // to prevent the content from feeling "bottom-heavy"
+        className="flex flex-col items-center max-w-screen-md w-full lg:-mt-12"
       >
-        {/* Visual Anchor - Scaled Brand Identity with protection */}
         <motion.div
           variants={itemVariants}
-          className="mb-6 md:mb-8 text-foreground"
+          className="mb-6 md:mb-10 text-foreground"
           aria-label="Flint and Steel Maker's Mark"
         >
           <BrandMark />
         </motion.div>
-        {/* Primary Invocation - Poetic Serif */}
         <motion.h1
           variants={itemVariants}
-          className="text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-10 md:mb-12 text-balance italic"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-6 md:mb-10 text-balance italic"
         >
           No sense in rushing to become.
         </motion.h1>
-        {/* Contemplative Body - Balanced and Breathing */}
         <motion.p
           variants={itemVariants}
-          className="text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2] tracking-[0.015em] max-w-[38ch] mx-auto text-center font-normal text-balance"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2] tracking-[0.01em] max-w-[36ch] mx-auto text-center font-normal text-balance"
         >
           There’s no race to becoming, because you’re already in the unfolding flow of being.
           Each moment is a step, and each step is enough.

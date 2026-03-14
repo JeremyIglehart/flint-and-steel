@@ -4,15 +4,15 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --background: 30 12% 12%; /* Deep, industrial steel slab (dark) */
-    --foreground: 30 15% 90%; /* High-contrast, bright bone/rust white */
-    --primary: 25 10% 75%;    /* Slightly muted poetic gray for H1 */
+    --background: 30 12% 12%; /* #1C1B1A Equivalent - Industrial Steel Slab */
+    --foreground: 30 15% 90%; /* Bone White */
+    --primary: 25 10% 85%;    /* Clean gray for H1 */
     --primary-foreground: 30 12% 12%;
     --muted: 30 8% 25%;
-    --muted-foreground: 25 5% 60%; /* High-contrast, readable body text on dark */
-    --border: 30 8% 25%;
-    --input: 30 8% 25%;
-    --ring: 12 75% 50%;      /* #D95C3C accent - slightly more vibrant for final touch */
+    --muted-foreground: 25 5% 65%; /* Readable body text */
+    --border: 30 8% 22%;
+    --input: 30 8% 22%;
+    --ring: 12 75% 55%;      /* Flint Glow #D95C3C */
     --radius: 0rem;
   }
   html {
@@ -21,22 +21,35 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     height: 100%;
-    /* Premium mobile experience: removes blue flicker on tap */
+    /* Mobile tap optimization */
     -webkit-tap-highlight-color: transparent;
-    /* Prevent layout shifts during entry animations */
-    overflow-y: scroll;
+    /* Consistent scrollbar gutter to prevent layout jumping */
+    overflow-y: auto;
   }
   body {
-    @apply bg-background text-foreground selection:bg-[#D95C3C]/40 selection:text-foreground;
+    @apply bg-background text-foreground;
+    /* Use high-quality selection colors for readability on dark background */
+    selection: bg-[#D95C3C]/30;
+    selection: text-white;
     font-family: 'Newsreader', serif;
     min-height: 100%;
-    overflow-x: hidden;
     margin: 0;
     padding: 0;
+    /* Prevent horizontal bounce on mobile */
+    overflow-x: hidden;
+  }
+  /* Root container sizing to ensure background covers all viewport scenarios */
+  #root {
+    min-height: 100dvh;
+    background-color: hsl(var(--background));
   }
 }
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+/* Custom transitions for the subtle page arrival */
+.framer-motion-arrival {
+  will-change: transform, opacity;
 }
