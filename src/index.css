@@ -17,15 +17,19 @@
   }
   html, body {
     height: 100%;
-    background-color: #EDE8E0; /* Updated to match new theme background */
+    background-color: #EDE8E0;
+    /* Ensure selection color is consistent globally */
+    @apply selection:bg-[#D95C3C]/15 selection:text-foreground;
   }
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   body {
-    @apply text-foreground selection:bg-[#D95C3C]/15;
+    @apply text-foreground;
     font-family: 'Newsreader', serif;
+    overflow-x: hidden;
   }
 }
 @layer utilities {
