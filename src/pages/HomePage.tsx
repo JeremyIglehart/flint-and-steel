@@ -3,12 +3,13 @@ import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
  * Optimized for absolute visual consistency and currentColor inheritance.
+ * Scaled up by ~67% (1.67x) per client request to fill negative space.
  */
 const BrandMark = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 864 864"
-    className="w-64 md:w-80 lg:w-96 h-auto"
+    className="w-[426px] md:w-[533px] lg:w-[640px] max-w-full h-auto"
     aria-hidden="true"
   >
     <path
