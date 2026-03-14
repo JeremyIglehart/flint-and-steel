@@ -3,13 +3,14 @@ import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
  * High-fidelity geometry (viewBox 659.48).
+ * Scaled up by 30% per client feedback: w-[370px] / md:w-[460px] / lg:w-[550px].
  * Optimized with select-none to preserve visual identity during user interaction.
  */
 const BrandMark = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 659.48 659.48"
-    className="w-[284px] md:w-[355px] lg:w-[426px] max-w-full h-auto select-none pointer-events-none"
+    className="w-[370px] md:w-[460px] lg:w-[550px] max-w-full h-auto select-none pointer-events-none"
     aria-hidden="true"
   >
     <path
@@ -74,7 +75,7 @@ export function HomePage() {
         animate="visible"
         className="flex flex-col items-center max-w-screen-md w-full"
       >
-        {/* Visual Anchor - Brand Protection with select-none */}
+        {/* Visual Anchor - Scaled Brand Identity with protection */}
         <motion.div
           variants={itemVariants}
           className="mb-6 md:mb-8 text-foreground"
