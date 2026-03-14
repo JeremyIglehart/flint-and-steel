@@ -5,8 +5,8 @@
 @layer base {
   :root {
     --background: 48 24% 96%; /* #F7F6F2 */
-    --foreground: 30 3% 10%;  /* #1C1B1A */
-    --primary: 30 3% 10%;
+    --foreground: 30 3% 13%;  /* #231f20 */
+    --primary: 30 3% 13%;
     --primary-foreground: 48 24% 96%;
     --muted: 45 6% 92%;
     --muted-foreground: 30 3% 35%;
@@ -20,7 +20,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    @apply bg-background text-foreground selection:bg-orange-100;
+    @apply bg-background text-foreground selection:bg-[#D95C3C]/10;
     font-family: 'Newsreader', serif;
     background-color: #F7F6F2;
   }
