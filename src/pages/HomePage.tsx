@@ -2,12 +2,10 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
- * Updated: All elements now use solid fills to ensure absolute visual consistency.
- * Uses currentColor to inherit from the CSS variable system.
+ * Optimized for absolute visual consistency and currentColor inheritance.
  */
 const BrandMark = () => (
   <svg
-    id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 864 864"
     className="w-64 md:w-80 lg:w-96 h-auto"
@@ -25,7 +23,6 @@ const BrandMark = () => (
       fill="currentColor"
       d="M532.51,572.13h48.93c10.34,0,20.39,3.46,28.53,9.83l131.55,102.85c2.52,1.97,1.08,6-2.11,5.94l-87.58-1.76c-11.33-.23-22.18-4.6-30.5-12.29l-95.29-88.03c-6.38-5.89-2.21-16.54,6.47-16.54Z"
     />
-    {/* Refined Geometric Elements: Converted from stroke to solid fill */}
     <path
       fill="currentColor"
       d="M445.73,469.56c-5.68,7.19-17.17,1.59-14.98-7.31,2.28-9.27,5.04-19.49,8.24-29.58,6.29-19.82,14.05-39.26,19.55-52.3,1.55-3.66,7-2.55,7,1.42v20.12c0,3.43,4.3,4.96,6.47,2.31l48.48-59.37c2.77-3.39,8.07.08,6.06,3.98l-19.49,37.83c-5.14,9.98-11.23,19.44-18.19,28.25l-43.14,54.64Z"
@@ -44,28 +41,60 @@ export function HomePage() {
   useEffect(() => {
     document.title = "Flint & Steel";
   }, []);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.4,
+        duration: 1.2,
+        ease: [0.25, 0.1, 0.25, 1.0],
+      },
+    },
+  };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.5,
+        ease: [0.25, 0.1, 0.25, 1.0],
+      },
+    },
+  };
   return (
-    <main className="min-h-[100dvh] bg-background flex flex-col items-center justify-center px-6 pt-4 pb-20 md:px-12 overflow-y-auto">
+    <main className="min-h-[100dvh] w-full flex flex-col items-center justify-start py-12 md:py-20 px-6 sm:px-12 overflow-y-auto">
       <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.8, ease: [0.25, 0.1, 0.25, 1.0] }}
-        className="flex flex-col items-center max-w-screen-md w-full"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="my-auto flex flex-col items-center max-w-screen-md w-full"
       >
-        {/* Visual Anchor: The solid brand identity */}
-        <div className="mb-2 md:mb-4 text-foreground">
+        {/* Visual Anchor */}
+        <motion.div 
+          variants={itemVariants} 
+          className="mb-8 md:mb-12 text-foreground"
+          aria-label="Flint and Steel Maker's Mark"
+        >
           <BrandMark />
-        </div>
-        {/* Primary Invocation: Poetic and centered */}
-        <h1 className="text-xl md:text-3xl text-foreground font-semibold tracking-tight text-center mb-6 md:mb-8 text-balance italic opacity-90">
+        </motion.div>
+        {/* Primary Invocation */}
+        <motion.h1 
+          variants={itemVariants}
+          className="text-2xl md:text-3xl lg:text-4xl text-foreground font-semibold tracking-tight text-center mb-10 md:mb-12 text-balance italic opacity-90"
+        >
           No sense in rushing to become.
-        </h1>
-        {/* Contemplative Body: Optimized for legibility and vertical rhythm */}
-        <p className="text-base md:text-lg text-muted-foreground leading-[1.9] md:leading-[2.2] tracking-[0.015em] max-w-[36ch] mx-auto text-center font-normal text-balance">
+        </motion.h1>
+        {/* Contemplative Body */}
+        <motion.p 
+          variants={itemVariants}
+          className="text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2] tracking-[0.015em] max-w-[38ch] mx-auto text-center font-normal text-balance"
+        >
           There’s no race to becoming, because you’re already in the unfolding flow of being.
           Each moment is a step, and each step is enough.
           You’ve been on the path all along.
-        </p>
+        </motion.p>
       </motion.div>
     </main>
   );
