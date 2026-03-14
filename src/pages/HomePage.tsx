@@ -3,6 +3,7 @@ import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
  * High-fidelity geometry (viewBox 659.48).
+ * Strictly using currentColor to inherit the optimized BrandMark lightness from CSS.
  */
 const BrandMark = () => (
   <svg
@@ -72,7 +73,7 @@ export function HomePage() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        // Balanced optical centering adjustment
+        // Balanced optical centering adjustment for large viewports
         className="flex flex-col items-center max-w-screen-md w-full lg:-mt-16"
       >
         <motion.div
