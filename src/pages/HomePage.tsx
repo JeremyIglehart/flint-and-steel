@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { useTheme } from '@/hooks/use-theme';
 /**
  * Production-grade BrandMark SVG.
  * High-fidelity geometry (viewBox 659.48).
@@ -9,7 +11,7 @@ const BrandMark = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 659.48 659.48"
-    className="w-[280px] sm:w-[370px] md:w-[460px] lg:w-[550px] max-w-[85vw] h-auto select-none pointer-events-none"
+    className="w-[280px] sm:w-[370px] md:w-[460px] lg:w-[550px] max-w-[85vw] h-auto select-none pointer-events-none transition-colors duration-500"
     aria-label="Flint and Steel Logo"
     role="img"
   >
@@ -40,8 +42,8 @@ const BrandMark = () => (
   </svg>
 );
 export function HomePage() {
+  const { isDark } = useTheme();
   useEffect(() => {
-    // Dynamic brand titles and theme-color meta for industrial consistency
     document.title = "Flint & Steel";
     let metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (!metaThemeColor) {
@@ -49,12 +51,11 @@ export function HomePage() {
       metaThemeColor.setAttribute('name', 'theme-color');
       document.getElementsByTagName('head')[0].appendChild(metaThemeColor);
     }
-    // Hardcoded to match hsl(30, 12%, 9%) - the Industrial Steel Slab background
-    metaThemeColor.setAttribute('content', '#171513');
-    return () => {
-      // Cleanup optional if standardizing across entire app
-    };
-  }, []);
+    // Sync browser UI with current theme background
+    // Dark: #171513 (hsl(30, 12%, 9%))
+    // Light: #817265 (hsl(25, 12%, 45%))
+    metaThemeColor.setAttribute('content', isDark ? '#171513' : '#817265');
+  }, [isDark]);
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -78,32 +79,32 @@ export function HomePage() {
   };
   return (
     <main
-      className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-12 md:py-24 px-6 sm:px-12 overflow-x-hidden antialiased bg-background"
+      className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center py-12 md:py-24 px-6 sm:px-12 overflow-x-hidden antialiased bg-background transition-colors duration-500"
       role="main"
     >
+      <ThemeToggle className="fixed top-4 right-4 z-50" />
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        // Strategic optical centering for larger displays
         className="flex flex-col items-center max-w-screen-md w-full lg:-mt-20 xl:-mt-24"
       >
         <motion.div
           variants={itemVariants}
-          className="mb-6 md:mb-8 text-foreground"
+          className="mb-6 md:mb-8 text-foreground transition-colors duration-500"
           aria-hidden="true"
         >
           <BrandMark />
         </motion.div>
         <motion.h1
           variants={itemVariants}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-6 md:mb-10 text-balance italic"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-6 md:mb-10 text-balance italic transition-colors duration-500"
         >
           No sense in rushing to become.
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2.2] tracking-[0.015em] max-w-[36ch] mx-auto text-center font-normal text-balance"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2.2] tracking-[0.015em] max-w-[36ch] mx-auto text-center font-normal text-balance transition-colors duration-500"
         >
           There’s no race to becoming, because you’re already in the unfolding flow of being.
           Each moment is a step, and each step is enough.

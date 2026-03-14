@@ -4,21 +4,33 @@
 @tailwind utilities;
 @layer base {
   :root {
-    /* Industrial Steel Slab - Deep Darkened Base */
+    /* Light Mode - Inverted Rust/Paper aesthetic */
+    /* Background uses the previous BrandMark color #817265 approx */
+    --background: 25 12% 45%; 
+    /* Foreground uses the previous background dark #171513 */
+    --foreground: 30 12% 9%;
+    /* Primary Invocation - Darker tone for contrast on rust */
+    --primary: 30 15% 5%;
+    --primary-foreground: 25 12% 45%;
+    /* Muted/Border - Deep charcoal synchronization with slightly higher visibility on rust */
+    --muted: 25 10% 35%;
+    --muted-foreground: 30 10% 15%;
+    --border: 25 10% 40%;
+    --input: 25 10% 40%;
+    --ring: 12 75% 55%;      /* Flint Glow #D95C3C */
+    --radius: 0rem;
+  }
+  .dark {
+    /* Dark Mode - Industrial Steel Slab (Previous Default) */
     --background: 30 12% 9%;
-    /* BrandMark - Prominent lightness (45%) on dark background */
     --foreground: 25 12% 45%;
-    /* H1 Invocation - Secondary hierarchy (35%) */
     --primary: 25 10% 35%;
     --primary-foreground: 30 12% 9%;
-    /* Border/Muted - Deep charcoal synchronization */
     --muted: 30 10% 15%;
-    /* Body Text - Refined readability (30%) */
     --muted-foreground: 25 8% 30%;
     --border: 30 8% 12%;
     --input: 30 8% 12%;
-    --ring: 12 75% 55%;      /* Flint Glow #D95C3C */
-    --radius: 0rem;
+    --ring: 12 75% 55%;
   }
   html {
     @apply scroll-smooth;
@@ -39,10 +51,11 @@
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
   ::selection {
     /* Standardized semi-transparent Flint highlight */
-    background-color: hsla(12, 75%, 55%, 0.25);
+    background-color: hsla(12, 75%, 55%, 0.3);
     color: hsl(var(--foreground));
   }
   #root {
@@ -50,6 +63,7 @@
     background-color: hsl(var(--background));
     display: flex;
     flex-direction: column;
+    transition: background-color 0.5s ease;
   }
 }
 @layer utilities {
