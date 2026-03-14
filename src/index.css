@@ -12,7 +12,7 @@
     --muted-foreground: 25 5% 60%; /* High-contrast, readable body text on dark */
     --border: 30 8% 25%;
     --input: 30 8% 25%;
-    --ring: 12 65% 54%;      /* #D95C3C accent */
+    --ring: 12 75% 50%;      /* #D95C3C accent - slightly more vibrant for final touch */
     --radius: 0rem;
   }
   html {
@@ -21,12 +21,18 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     height: 100%;
+    /* Premium mobile experience: removes blue flicker on tap */
+    -webkit-tap-highlight-color: transparent;
+    /* Prevent layout shifts during entry animations */
+    overflow-y: scroll;
   }
   body {
     @apply bg-background text-foreground selection:bg-[#D95C3C]/40 selection:text-foreground;
     font-family: 'Newsreader', serif;
     min-height: 100%;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
 }
 @layer utilities {

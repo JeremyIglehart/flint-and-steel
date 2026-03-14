@@ -3,13 +3,13 @@ import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
  * High-fidelity geometry (viewBox 659.48).
- * All paths are solid fills as per client requirements.
+ * Optimized with select-none to preserve visual identity during user interaction.
  */
 const BrandMark = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 659.48 659.48"
-    className="w-[284px] md:w-[355px] lg:w-[426px] max-w-full h-auto"
+    className="w-[284px] md:w-[355px] lg:w-[426px] max-w-full h-auto select-none pointer-events-none"
     aria-hidden="true"
   >
     <path
@@ -59,7 +59,7 @@ export function HomePage() {
       y: 0,
       transition: {
         duration: 1.5,
-        ease: "easeOut",
+        ease: [0.33, 1, 0.68, 1], // Custom cubic-bezier for smoother arrival
       },
     },
   };
@@ -74,8 +74,7 @@ export function HomePage() {
         animate="visible"
         className="flex flex-col items-center max-w-screen-md w-full"
       >
-        {/* Visual Anchor - Refined Maker's Mark */}
-        {/* Strictly cut margin-bottom in half for Phase 19: Vertical Rhythm Optimization */}
+        {/* Visual Anchor - Brand Protection with select-none */}
         <motion.div
           variants={itemVariants}
           className="mb-6 md:mb-8 text-foreground"
