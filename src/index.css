@@ -5,11 +5,11 @@
 @layer base {
   :root {
     --background: 34 8% 91%; /* #EDE8E0 - Warm stone/steel patina */
-    --foreground: 30 3% 13%;  /* #211f20 equivalent */
-    --primary: 30 3% 13%;
+    --foreground: 0 0% 14%;   /* #231f20 equivalent - Deep charcoal */
+    --primary: 0 0% 14%;
     --primary-foreground: 34 8% 91%;
     --muted: 34 5% 85%;
-    --muted-foreground: 30 3% 30%;
+    --muted-foreground: 0 0% 30%;
     --border: 30 3% 85%;
     --input: 30 3% 85%;
     --ring: 12 65% 54%;      /* #D95C3C accent */
@@ -18,7 +18,6 @@
   html, body {
     height: 100%;
     background-color: #EDE8E0;
-    /* Ensure selection color is consistent globally */
     @apply selection:bg-[#D95C3C]/15 selection:text-foreground;
   }
   html {
