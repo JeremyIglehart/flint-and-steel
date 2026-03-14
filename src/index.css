@@ -4,14 +4,14 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --background: 34 15% 91%; /* Precisely tuned warm stone/steel patina */
-    --foreground: 0 0% 14%;   /* Deep charcoal */
-    --primary: 0 0% 14%;
-    --primary-foreground: 34 15% 91%;
-    --muted: 34 10% 85%;
-    --muted-foreground: 0 0% 32%;
-    --border: 34 5% 82%;
-    --input: 34 5% 82%;
+    --background: 30 12% 83%; /* Darker, industrial steel slab */
+    --foreground: 20 10% 22%; /* Deep rust-tinted charcoal for BrandMark */
+    --primary: 20 8% 35%;    /* 20% less dark than foreground for H1 */
+    --primary-foreground: 30 12% 83%;
+    --muted: 30 8% 75%;
+    --muted-foreground: 25 5% 45%; /* High-contrast, readable body text */
+    --border: 30 5% 75%;
+    --input: 30 5% 75%;
     --ring: 12 65% 54%;      /* #D95C3C accent */
     --radius: 0rem;
   }

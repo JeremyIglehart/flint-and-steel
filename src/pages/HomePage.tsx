@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
  * Optimized for absolute visual consistency and currentColor inheritance.
@@ -41,25 +41,25 @@ export function HomePage() {
   useEffect(() => {
     document.title = "Flint & Steel";
   }, []);
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.4,
         duration: 1.2,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        ease: "easeOut",
       },
     },
   };
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 12 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 1.5,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        ease: "easeOut",
       },
     },
   };
@@ -71,23 +71,23 @@ export function HomePage() {
         animate="visible"
         className="my-auto flex flex-col items-center max-w-screen-md w-full"
       >
-        {/* Visual Anchor */}
-        <motion.div 
-          variants={itemVariants} 
+        {/* Visual Anchor - Uses text-foreground for darkest tone */}
+        <motion.div
+          variants={itemVariants}
           className="mb-8 md:mb-12 text-foreground"
           aria-label="Flint and Steel Maker's Mark"
         >
           <BrandMark />
         </motion.div>
-        {/* Primary Invocation */}
-        <motion.h1 
+        {/* Primary Invocation - Uses text-primary for 20% less dark tone */}
+        <motion.h1
           variants={itemVariants}
-          className="text-2xl md:text-3xl lg:text-4xl text-foreground font-semibold tracking-tight text-center mb-10 md:mb-12 text-balance italic opacity-90"
+          className="text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-10 md:mb-12 text-balance italic opacity-95"
         >
           No sense in rushing to become.
         </motion.h1>
-        {/* Contemplative Body */}
-        <motion.p 
+        {/* Contemplative Body - Uses text-muted-foreground for optimal readability */}
+        <motion.p
           variants={itemVariants}
           className="text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2] tracking-[0.015em] max-w-[38ch] mx-auto text-center font-normal text-balance"
         >
