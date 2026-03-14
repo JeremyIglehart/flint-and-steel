@@ -64,29 +64,29 @@ export function HomePage() {
     },
   };
   return (
-    <main className="min-h-[100dvh] w-full flex flex-col items-center justify-start py-12 md:py-20 px-6 sm:px-12 overflow-y-auto">
+    <main className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-12 px-6 sm:px-12 overflow-y-auto">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="my-auto flex flex-col items-center max-w-screen-md w-full"
+        className="flex flex-col items-center max-w-screen-md w-full"
       >
-        {/* Visual Anchor - Uses text-foreground for darkest tone */}
+        {/* Visual Anchor - Maker's Mark */}
         <motion.div
           variants={itemVariants}
-          className="mb-8 md:mb-12 text-foreground"
+          className="mb-12 md:mb-16 text-foreground"
           aria-label="Flint and Steel Maker's Mark"
         >
           <BrandMark />
         </motion.div>
-        {/* Primary Invocation - Uses text-primary for 20% less dark tone */}
+        {/* Primary Invocation - Poetic Serif */}
         <motion.h1
           variants={itemVariants}
-          className="text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-10 md:mb-12 text-balance italic opacity-95"
+          className="text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-10 md:mb-12 text-balance italic"
         >
           No sense in rushing to become.
         </motion.h1>
-        {/* Contemplative Body - Uses text-muted-foreground for optimal readability */}
+        {/* Contemplative Body - Balanced and Breathing */}
         <motion.p
           variants={itemVariants}
           className="text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2] tracking-[0.015em] max-w-[38ch] mx-auto text-center font-normal text-balance"

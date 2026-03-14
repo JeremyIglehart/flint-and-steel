@@ -4,14 +4,14 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --background: 30 12% 83%; /* Darker, industrial steel slab */
-    --foreground: 20 10% 22%; /* Deep rust-tinted charcoal for BrandMark */
-    --primary: 20 8% 35%;    /* 20% less dark than foreground for H1 */
-    --primary-foreground: 30 12% 83%;
-    --muted: 30 8% 75%;
-    --muted-foreground: 25 5% 45%; /* High-contrast, readable body text */
-    --border: 30 5% 75%;
-    --input: 30 5% 75%;
+    --background: 30 12% 12%; /* Deep, industrial steel slab (dark) */
+    --foreground: 30 15% 90%; /* High-contrast, bright bone/rust white */
+    --primary: 25 10% 75%;    /* Slightly muted poetic gray for H1 */
+    --primary-foreground: 30 12% 12%;
+    --muted: 30 8% 25%;
+    --muted-foreground: 25 5% 60%; /* High-contrast, readable body text on dark */
+    --border: 30 8% 25%;
+    --input: 30 8% 25%;
     --ring: 12 65% 54%;      /* #D95C3C accent */
     --radius: 0rem;
   }
@@ -23,7 +23,7 @@
     height: 100%;
   }
   body {
-    @apply bg-background text-foreground selection:bg-[#D95C3C]/15 selection:text-foreground;
+    @apply bg-background text-foreground selection:bg-[#D95C3C]/30 selection:text-foreground;
     font-family: 'Newsreader', serif;
     min-height: 100%;
     overflow-x: hidden;
