@@ -3,7 +3,7 @@ import { motion, Variants } from 'framer-motion';
 /**
  * Production-grade BrandMark SVG.
  * High-fidelity geometry (viewBox 659.48).
- * Strictly using currentColor to inherit the optimized BrandMark lightness from CSS.
+ * Strictly using currentColor to inherit optimized lightness from CSS variables.
  */
 const BrandMark = () => (
   <svg
@@ -41,57 +41,69 @@ const BrandMark = () => (
 );
 export function HomePage() {
   useEffect(() => {
+    // Dynamic brand titles and theme-color meta for industrial consistency
     document.title = "Flint & Steel";
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!metaThemeColor) {
+      metaThemeColor = document.createElement('meta');
+      metaThemeColor.setAttribute('name', 'theme-color');
+      document.getElementsByTagName('head')[0].appendChild(metaThemeColor);
+    }
+    // Hardcoded to match hsl(30, 12%, 9%) - the Industrial Steel Slab background
+    metaThemeColor.setAttribute('content', '#171513');
+    return () => {
+      // Cleanup optional if standardizing across entire app
+    };
   }, []);
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.1,
+        staggerChildren: 0.35,
+        delayChildren: 0.2,
       },
     },
   };
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, y: 12 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1.2,
-        ease: [0.33, 1, 0.68, 1],
+        duration: 1.4,
+        ease: [0.25, 1, 0.5, 1],
       },
     },
   };
   return (
     <main
-      className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-12 md:py-24 px-6 sm:px-12 overflow-x-hidden antialiased"
+      className="min-h-[100dvh] w-full flex flex-col items-center justify-center py-12 md:py-24 px-6 sm:px-12 overflow-x-hidden antialiased bg-background"
       role="main"
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        // Balanced optical centering adjustment for large viewports
-        className="flex flex-col items-center max-w-screen-md w-full lg:-mt-16"
+        // Strategic optical centering for larger displays
+        className="flex flex-col items-center max-w-screen-md w-full lg:-mt-20 xl:-mt-24"
       >
         <motion.div
           variants={itemVariants}
-          className="mb-4 md:mb-6 text-foreground"
+          className="mb-6 md:mb-8 text-foreground"
           aria-hidden="true"
         >
           <BrandMark />
         </motion.div>
         <motion.h1
           variants={itemVariants}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-6 md:mb-8 text-balance italic"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-6 md:mb-10 text-balance italic"
         >
           No sense in rushing to become.
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2] tracking-[0.01em] max-w-[34ch] mx-auto text-center font-normal text-balance"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-[1.8] md:leading-[2.2] tracking-[0.015em] max-w-[36ch] mx-auto text-center font-normal text-balance"
         >
           There’s no race to becoming, because you’re already in the unfolding flow of being.
           Each moment is a step, and each step is enough.

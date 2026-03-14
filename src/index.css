@@ -6,22 +6,23 @@
   :root {
     /* Industrial Steel Slab - Deep Darkened Base */
     --background: 30 12% 9%;
-    /* BrandMark - Increased lightness to 45% for maximum prominence on the 9% background */
+    /* BrandMark - Prominent lightness (45%) on dark background */
     --foreground: 25 12% 45%;
-    /* H1 Invocation - Adjusted to 35% for clear hierarchy (Secondary to the BrandMark) */
+    /* H1 Invocation - Secondary hierarchy (35%) */
     --primary: 25 10% 35%;
     --primary-foreground: 30 12% 9%;
     /* Border/Muted - Deep charcoal synchronization */
     --muted: 30 10% 15%;
-    /* Body Text - Refined to 30% for 'deep readability' without competing with the BrandMark */
+    /* Body Text - Refined readability (30%) */
     --muted-foreground: 25 8% 30%;
     --border: 30 8% 12%;
     --input: 30 8% 12%;
-    --ring: 12 75% 55%;      /* Flint Glow #D95C3C - grounded in dark context */
+    --ring: 12 75% 55%;      /* Flint Glow #D95C3C */
     --radius: 0rem;
   }
   html {
-    @apply scroll-smooth bg-background;
+    @apply scroll-smooth;
+    background-color: hsl(var(--background));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -30,7 +31,9 @@
     overflow-y: auto;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
     font-family: 'Newsreader', serif;
     min-height: 100%;
     margin: 0;
@@ -38,12 +41,15 @@
     overflow-x: hidden;
   }
   ::selection {
-    background-color: rgba(217, 92, 60, 0.3);
-    color: #F7F6F2;
+    /* Standardized semi-transparent Flint highlight */
+    background-color: hsla(12, 75%, 55%, 0.25);
+    color: hsl(var(--foreground));
   }
   #root {
     min-height: 100dvh;
     background-color: hsl(var(--background));
+    display: flex;
+    flex-direction: column;
   }
 }
 @layer utilities {
