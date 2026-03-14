@@ -3,9 +3,8 @@ import { motion, Variants } from 'framer-motion';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useTheme } from '@/hooks/use-theme';
 /**
- * Production-grade BrandMark SVG.
- * High-fidelity geometry (viewBox 659.48).
- * Strictly using currentColor to inherit optimized lightness from CSS variables.
+ * BrandMark SVG - High-fidelity vector mark.
+ * Uses currentColor to adapt to theme changes.
  */
 const BrandMark = () => (
   <svg
@@ -45,16 +44,21 @@ export function HomePage() {
   const { isDark } = useTheme();
   useEffect(() => {
     document.title = "Flint & Steel";
-    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (!metaThemeColor) {
-      metaThemeColor = document.createElement('meta');
-      metaThemeColor.setAttribute('name', 'theme-color');
-      document.getElementsByTagName('head')[0].appendChild(metaThemeColor);
-    }
-    // Sync browser UI with current theme background
-    // Dark: #171513 (hsl(30, 12%, 9%))
-    // Light: #817265 (hsl(25, 12%, 45%))
-    metaThemeColor.setAttribute('content', isDark ? '#171513' : '#817265');
+    // Manage theme-color meta for browser chrome integration
+    const updateThemeMeta = () => {
+      let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (!metaThemeColor) {
+        metaThemeColor = document.createElement('meta');
+        metaThemeColor.setAttribute('name', 'theme-color');
+        document.getElementsByTagName('head')[0].appendChild(metaThemeColor);
+      }
+      // Values synced with CSS variables in index.css
+      // Dark: hsl(30, 12%, 9%) -> #171513
+      // Light: hsl(25, 12%, 45%) -> #817265
+      const color = isDark ? '#171513' : '#817265';
+      metaThemeColor.setAttribute('content', color);
+    };
+    updateThemeMeta();
   }, [isDark]);
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -82,7 +86,7 @@ export function HomePage() {
       className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center py-12 md:py-24 px-6 sm:px-12 overflow-x-hidden antialiased bg-background transition-colors duration-500"
       role="main"
     >
-      <ThemeToggle className="fixed top-4 right-4 z-50" />
+      <ThemeToggle className="fixed top-6 right-6 z-50" />
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -91,14 +95,14 @@ export function HomePage() {
       >
         <motion.div
           variants={itemVariants}
-          className="mb-6 md:mb-8 text-foreground transition-colors duration-500"
+          className="mb-8 md:mb-12 text-foreground transition-colors duration-500"
           aria-hidden="true"
         >
           <BrandMark />
         </motion.div>
         <motion.h1
           variants={itemVariants}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-6 md:mb-10 text-balance italic transition-colors duration-500"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-tight text-center mb-8 md:mb-12 text-balance italic transition-colors duration-500"
         >
           No sense in rushing to become.
         </motion.h1>

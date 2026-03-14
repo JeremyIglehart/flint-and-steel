@@ -4,24 +4,20 @@
 @tailwind utilities;
 @layer base {
   :root {
-    /* Light Mode - Inverted Rust/Paper aesthetic */
-    /* Background uses the previous BrandMark color #817265 approx */
-    --background: 25 12% 45%; 
-    /* Foreground uses the previous background dark #171513 */
+    /* Light Mode - Rust/Paper aesthetic */
+    --background: 25 12% 45%;
     --foreground: 30 12% 9%;
-    /* Primary Invocation - Darker tone for contrast on rust */
     --primary: 30 15% 5%;
     --primary-foreground: 25 12% 45%;
-    /* Muted/Border - Deep charcoal synchronization with slightly higher visibility on rust */
     --muted: 25 10% 35%;
     --muted-foreground: 30 10% 15%;
     --border: 25 10% 40%;
     --input: 25 10% 40%;
-    --ring: 12 75% 55%;      /* Flint Glow #D95C3C */
+    --ring: 12 75% 55%;
     --radius: 0rem;
   }
   .dark {
-    /* Dark Mode - Industrial Steel Slab (Previous Default) */
+    /* Dark Mode - Industrial Steel Slab */
     --background: 30 12% 9%;
     --foreground: 25 12% 45%;
     --primary: 25 10% 35%;
@@ -40,30 +36,39 @@
     text-rendering: optimizeLegibility;
     height: 100%;
     -webkit-tap-highlight-color: transparent;
-    overflow-y: auto;
+    overflow-x: hidden;
+    /* Prevent layout shifts when scrollbars appear */
+    scrollbar-gutter: stable;
+    /* Move transition to html for seamless viewport shifts */
+    transition: background-color 0.5s ease;
   }
   body {
     @apply antialiased;
-    background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-family: 'Newsreader', serif;
     min-height: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    /* Ensure no background color conflict with html */
+    background-color: transparent;
+    transition: color 0.5s ease;
   }
   ::selection {
-    /* Standardized semi-transparent Flint highlight */
     background-color: hsla(12, 75%, 55%, 0.3);
     color: hsl(var(--foreground));
   }
   #root {
     min-height: 100dvh;
-    background-color: hsl(var(--background));
     display: flex;
     flex-direction: column;
-    transition: background-color 0.5s ease;
+  }
+  /* Explicitly handle Newsreader weights for clean rendering */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+  }
+  p {
+    font-weight: 400;
   }
 }
 @layer utilities {
